@@ -20,7 +20,6 @@ var invalidKeyErrorChecker = function(key, pos) {
 describe("strict parser", function() {
   it("should only parse keys that are specified for a single key", function() {
     let kvParser = new StrictParser(["name"]);
-
     assert.throws(
       () => {
         try {
@@ -40,7 +39,6 @@ describe("strict parser", function() {
       age: "23"
     };
     assert.ownInclude(expected, actual);
-
     assert.throws(
       () => {
         try {
@@ -53,7 +51,6 @@ describe("strict parser", function() {
   });
 
   it("should throw an error when one of the keys is not valid", function() {
-
     assert.throws(
       () => {
         try {
@@ -67,7 +64,6 @@ describe("strict parser", function() {
   });
 
   it("should throw an error on invalid key when there are spaces between keys and assignment operators", function() {
-
     assert.throws(
       () => {
         try {
@@ -81,7 +77,6 @@ describe("strict parser", function() {
   });
 
   it("should throw an error on invalid key when there are quotes on values", function() {
-
     assert.throws(
       () => {
         try {
@@ -95,7 +90,6 @@ describe("strict parser", function() {
   });
 
   it("should throw an error on invalid key when there are cases of both quotes and no quotes", function() {
-
     assert.throws(
       () => {
         try {
@@ -109,7 +103,6 @@ describe("strict parser", function() {
   });
 
   it("should throw an error when no valid keys are specified", function() {
-
     assert.throws(
       () => {
         try {
@@ -123,7 +116,6 @@ describe("strict parser", function() {
   });
 
   it("should throw an error when no array is passed", function() {
-
     assert.throws(
       () => {
         try {
