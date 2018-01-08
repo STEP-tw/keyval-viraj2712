@@ -5,8 +5,6 @@ const errors = function(filePath) {
   return "../src/errors/" + filePath
 };
 
-const simpleAssert = require('assert');
-
 const assert = require('chai').assert;
 const Parser = require(src('index.js')).Parser;
 const MissingValueError = require(errors('missingValueError.js'));
@@ -291,7 +289,7 @@ describe("error handling", function() {
         try {
           kvParser.parse("key=")
         } catch (e) {
-          if(errorChecker("key", 3, MissingValueError)(e))
+          if (errorChecker("key", 3, MissingValueError)(e))
             throw e;
         }
       })
@@ -303,7 +301,7 @@ describe("error handling", function() {
         try {
           kvParser.parse("key=\"value")
         } catch (e) {
-          if(errorChecker("key", 9, MissingEndQuoteError)(e))
+          if (errorChecker("key", 9, MissingEndQuoteError)(e))
             throw e;
         }
       })
@@ -315,7 +313,7 @@ describe("error handling", function() {
         try {
           var p = kvParser.parse("=value");
         } catch (e) {
-          if(errorChecker(undefined, 0, MissingKeyError)(e))
+          if (errorChecker(undefined, 0, MissingKeyError)(e))
             throw e;
         }
       })
@@ -327,7 +325,7 @@ describe("error handling", function() {
         try {
           var p = kvParser.parse("'foo'=value");
         } catch (e) {
-          if(errorChecker(undefined, 0, MissingKeyError)(e))
+          if (errorChecker(undefined, 0, MissingKeyError)(e))
             throw e;
         }
       })
@@ -339,7 +337,7 @@ describe("error handling", function() {
         try {
           var p = kvParser.parse("key value");
         } catch (e) {
-          if(errorChecker(undefined, 4, MissingAssignmentOperatorError)(e))
+          if (errorChecker(undefined, 4, MissingAssignmentOperatorError)(e))
             throw e;
         }
       })
@@ -351,7 +349,7 @@ describe("error handling", function() {
         try {
           var p = kvParser.parse("key");
         } catch (e) {
-          if(errorChecker(undefined, 2, IncompleteKeyValuePairError)(e))
+          if (errorChecker(undefined, 2, IncompleteKeyValuePairError)(e))
             throw e;
         }
       })
